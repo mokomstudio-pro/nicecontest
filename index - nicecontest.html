@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NICE CONTEST · Festival de culture urbaine — Nice · 01–03 août 2026</title>
+<meta name="description" content="NICE CONTEST — 3 jours de street art, hip-hop, skate et musique à Nice. Du 1er au 3 août 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;600;800;900&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C0C10; --ink2:#15151c; --panel:#1b1b22; --line:#2c2c36;
+  --mag:#FB009B; --yel:#FEF500; --cyan:#42FEFC; --white:#fff; --grey:#8a8a96;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:"Archivo",sans-serif;color:var(--white);background:var(--ink);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+img{max-width:100%}
+a{color:inherit;text-decoration:none}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>")}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.disp{font-family:"Big Shoulders Display",sans-serif;font-weight:900;letter-spacing:.005em;text-transform:uppercase}
+.mark{font-family:"Permanent Marker",cursive}
+.mono{font-family:"Space Mono",monospace}
+.concrete{background:
+  radial-gradient(120% 80% at 20% 0%,#23232b,transparent 60%),
+  radial-gradient(120% 90% at 90% 100%,#1a1a20,transparent 55%),#131318;position:relative}
+.concrete::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:soft-light;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.02' numOctaves='4'/></filter><rect width='100%25' height='100%25' filter='url(%23c)'/></svg>")}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:"Big Shoulders Display";font-weight:900;
+  text-transform:uppercase;font-size:1.05rem;letter-spacing:.02em;padding:.7rem 1.5rem;border:2px solid var(--white);
+  background:var(--white);color:#000;cursor:pointer;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--mag)}
+.btn.y{background:var(--yel);border-color:var(--yel)}
+.btn.ghost{background:transparent;color:var(--white)}
+.btn.ghost:hover{background:var(--cyan);color:#000;border-color:var(--cyan);box-shadow:5px 5px 0 var(--mag)}
+
+/* ---------- NAV ---------- */
+header.nav{position:sticky;top:0;z-index:200;background:rgba(12,12,16,.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:.5rem;font-family:"Big Shoulders Display";font-weight:900;font-size:1.7rem;text-transform:uppercase;line-height:.8}
+.brand .c{color:var(--mag)}
+.brand svg{width:30px;height:30px;color:var(--yel)}
+.nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}
+.nav-links a{font-family:"Space Mono";font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);transition:color .15s}
+.nav-links a:hover{color:var(--white)}
+.nav-links .btn{font-size:.85rem;padding:.5rem 1rem}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px;color:var(--white)}
+.menu-btn span{display:block;height:3px;background:currentColor;margin:5px 0;width:26px;transition:.2s}
+@media(max-width:880px){
+  .menu-btn{display:block}
+  .nav-links{position:fixed;inset:72px 0 auto 0;flex-direction:column;background:var(--ink);gap:0;
+    border-bottom:1px solid var(--line);padding:10px 0;transform:translateY(-120%);transition:transform .28s;align-items:stretch}
+  .nav-links.open{transform:none}
+  .nav-links li{padding:0 24px}
+  .nav-links a{display:block;padding:14px 0;font-size:1rem;border-bottom:1px solid var(--line)}
+  .nav-links .btn{margin:14px 24px;justify-content:center}
+  body.lock{overflow:hidden}
+}
+
+/* ---------- HERO ---------- */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 56px;overflow:hidden}
+.kicker{font-family:"Space Mono";font-size:.8rem;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:6px}
+.scr{font-family:"Big Shoulders Display",sans-serif;font-weight:900;text-transform:uppercase;line-height:.74}
+.scr .ln{display:flex;flex-wrap:nowrap;justify-content:flex-start}
+.scr i{font-style:normal;display:inline-block;position:relative;margin:0 -.05em;
+  text-shadow:0 5px 0 var(--ink),5px 0 0 var(--ink),0 -5px 0 var(--ink),-5px 0 0 var(--ink),4px 4px 0 var(--ink),-4px -4px 0 var(--ink),4px -4px 0 var(--ink),-4px 4px 0 var(--ink)}
+.scr i:nth-child(7n+1){transform:rotate(-8deg) translateY(.07em)}
+.scr i:nth-child(7n+2){transform:rotate(6deg) translateY(-.08em);z-index:2}
+.scr i:nth-child(7n+3){transform:rotate(-4deg) translateY(.035em)}
+.scr i:nth-child(7n+4){transform:rotate(9deg) translateY(-.06em);z-index:2}
+.scr i:nth-child(7n+5){transform:rotate(-6deg) translateY(.08em)}
+.scr i:nth-child(7n+6){transform:rotate(3deg) translateY(-.035em)}
+.scr i:nth-child(7n+7){transform:rotate(-2deg) translateY(.055em)}
+.scr .y{color:var(--yel)} .scr .c{color:var(--cyan)} .scr .m{color:var(--mag)}
+.scr .ln+.ln{margin-top:.06em}
+.hero .scr i{animation:tremble .45s linear infinite}
+.hero .scr i:nth-child(2n){animation-delay:-.09s;animation-duration:.5s}
+.hero .scr i:nth-child(3n){animation-delay:-.23s}
+.hero .scr i:nth-child(4n){animation-delay:-.35s;animation-duration:.4s}
+.hero .scr i:nth-child(5n){animation-delay:-.16s;animation-duration:.52s}
+@keyframes tremble{0%{translate:0 0}20%{translate:-2px 1.5px}40%{translate:2px -1.5px}60%{translate:-1.5px -1px}80%{translate:1.5px 2px}100%{translate:0 0}}
+@media(prefers-reduced-motion:reduce){.hero .scr i,.marq-track{animation:none}}
+.hero-smiley{position:absolute;right:-10px;top:12%;width:200px;height:200px;color:var(--yel);transform:rotate(8deg);opacity:.95;z-index:1}
+@media(max-width:760px){.hero-smiley{width:110px;height:110px;top:auto;bottom:5%;right:-6px}}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;align-items:center;
+  font-family:"Space Mono";font-size:.9rem;letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.hero-meta b{color:var(--white)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+
+/* ---------- MARQUEE ---------- */
+.marq{background:var(--yel);color:#000;overflow:hidden;padding:12px 0;border-top:3px solid #000;border-bottom:3px solid #000;white-space:nowrap}
+.marq-track{display:inline-flex;gap:0;animation:slide 26s linear infinite;font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.4rem}
+.marq-track span{padding:0 1.2rem}
+.marq-track .dot{color:var(--mag)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION ---------- */
+.sec{padding:90px 0;position:relative}
+.eyebrow{font-family:"Space Mono";font-size:.76rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mag);margin-bottom:12px}
+.sec-h{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:clamp(2.4rem,6vw,4.4rem);line-height:.9}
+.sec-sub{color:var(--grey);max-width:42rem;margin-top:14px;font-size:1.05rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- INTRO ---- */
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
+.intro-lead{font-family:"Big Shoulders Display";font-weight:800;text-transform:uppercase;font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.02}
+.intro-lead .y{color:var(--yel)}.intro-lead .c{color:var(--cyan)}
+.intro-body{color:#cdcdd5}
+.intro-body p+p{margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;grid-column:1/-1}
+.stat{border:1px solid var(--line);background:var(--ink2);border-radius:6px;padding:20px}
+.stat b{font-family:"Big Shoulders Display";font-weight:900;font-size:2.6rem;display:block;line-height:.9}
+.stat:nth-child(1) b{color:var(--mag)}.stat:nth-child(2) b{color:var(--cyan)}.stat:nth-child(3) b{color:var(--yel)}
+.stat span{font-family:"Space Mono";font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+
+/* ---- DISCIPLINES ---- */
+.discs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dcard{border:1px solid var(--line);background:var(--ink2);border-radius:8px;padding:26px 22px;position:relative;
+  overflow:hidden;transition:transform .25s,border-color .25s;min-height:230px}
+.dcard:hover{transform:translateY(-6px)}
+.dcard .ic{width:54px;height:54px;margin-bottom:16px}
+.dcard h3{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.7rem;line-height:.9}
+.dcard p{color:var(--grey);font-size:.9rem;margin-top:8px}
+.dcard:nth-child(1):hover{border-color:var(--yel)} .dcard:nth-child(1) .ic{color:var(--yel)}
+.dcard:nth-child(2):hover{border-color:var(--mag)} .dcard:nth-child(2) .ic{color:var(--mag)}
+.dcard:nth-child(3):hover{border-color:var(--cyan)} .dcard:nth-child(3) .ic{color:var(--cyan)}
+.dcard:nth-child(4):hover{border-color:var(--white)} .dcard:nth-child(4) .ic{color:var(--white)}
+
+/* ---- PROGRAMME ---- */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tab{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.3rem;
+  padding:.5rem 1.4rem;border:2px solid var(--line);background:transparent;color:var(--grey);cursor:pointer;transition:.15s}
+.tab[aria-selected="true"]{background:var(--yel);color:#000;border-color:var(--yel);transform:rotate(-1.5deg)}
+.tab:hover{color:var(--white)}
+.panel{display:none}.panel.active{display:block}
+.slot{display:grid;grid-template-columns:130px 1fr auto;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
+.slot .t{font-family:"Space Mono";font-weight:700;color:var(--cyan);font-size:1rem}
+.slot .e{font-family:"Big Shoulders Display";font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:.95}
+.slot .e small{display:block;font-family:"Archivo";font-weight:400;text-transform:none;color:var(--grey);font-size:.84rem;margin-top:3px;letter-spacing:0}
+.slot .tagd{font-family:"Space Mono";font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.2rem .55rem;border:1px solid var(--line);color:var(--grey);white-space:nowrap}
+@media(max-width:680px){.slot{grid-template-columns:1fr;gap:4px}.slot .tagd{justify-self:start;margin-top:6px}}
+
+/* ---- LINEUP ---- */
+.lineup{border-top:1px solid var(--line)}
+.act{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);
+  transition:padding .2s,background .2s;cursor:default}
+.act:hover{padding-left:14px;background:linear-gradient(90deg,rgba(251,0,155,.08),transparent)}
+.act .nm{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3.2rem);line-height:.85;transition:color .2s}
+.act:hover .nm{color:var(--yel)}
+.act .role{font-family:"Space Mono";font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);text-align:right;white-space:nowrap}
+.lineup-note{margin-top:22px;font-family:"Permanent Marker";color:var(--cyan);font-size:1.3rem;transform:rotate(-1.5deg)}
+
+/* ---- INFOS ---- */
+.infos-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.infocard{border:1px solid var(--line);background:var(--ink2);border-radius:8px;padding:28px}
+.infocard h3{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.5rem;margin-bottom:14px}
+.infocard ul{list-style:none}
+.infocard li{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.infocard li:last-child{border-bottom:0}
+.infocard li b{font-family:"Space Mono";color:var(--cyan);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;min-width:90px}
+.mapblock{border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative;min-height:280px;background:#0e0e13}
+.mapblock .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.5}
+.mapblock .road{position:absolute;height:8px;background:var(--ink2)}
+.mapblock .pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);text-align:center}
+.mapblock .pin .dot{width:18px;height:18px;border-radius:50%;background:var(--mag);margin:0 auto;box-shadow:0 0 0 8px rgba(251,0,155,.25),0 0 24px var(--mag)}
+.mapblock .pin .lbl{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;margin-top:10px;font-size:1.3rem}
+.mapblock .tagm{position:absolute;left:16px;bottom:14px;font-family:"Space Mono";font-size:.72rem;color:var(--grey)}
+
+/* ---- BILLETTERIE ---- */
+.bill{background:var(--ink2)}
+.passes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.pass{border:1px solid var(--line);border-radius:10px;background:var(--ink);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.pass.hot{border-color:var(--yel)}
+.pass .hd{padding:18px 20px;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
+.pass .hd .nm{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.4rem;line-height:.85}
+.pass .hd .badge{font-family:"Space Mono";font-weight:700;font-size:.62rem;letter-spacing:.1em;background:var(--yel);color:#000;padding:3px 8px;text-transform:uppercase}
+.pass .price{padding:22px 20px 8px}
+.pass .price b{font-family:"Big Shoulders Display";font-weight:900;font-size:3.4rem;line-height:.8}
+.pass .price .y{color:var(--yel)}
+.pass .price span{font-family:"Space Mono";color:var(--grey);font-size:.78rem}
+.pass ul{list-style:none;padding:6px 20px 18px;flex:1}
+.pass li{font-size:.9rem;color:#cdcdd5;padding:7px 0;display:flex;gap:8px}
+.pass li::before{content:"→";color:var(--cyan);font-weight:700}
+.pass .foot{padding:0 20px 22px}
+.pass .foot .btn{width:100%;justify-content:center}
+.pass .barcode{height:30px;margin:0 20px 14px;background:repeating-linear-gradient(90deg,var(--grey) 0 2px,transparent 2px 4px,var(--grey) 4px 5px,transparent 5px 9px);opacity:.5}
+
+/* ---- NEWSLETTER ---- */
+.news{text-align:center}
+.news .sec-h{font-size:clamp(2.2rem,6vw,4rem)}
+.news form{display:flex;gap:10px;max-width:520px;margin:26px auto 0;flex-wrap:wrap;justify-content:center}
+.news input{flex:1;min-width:220px;background:var(--ink2);border:2px solid var(--line);color:#fff;padding:.85rem 1rem;
+  font-family:"Space Mono";font-size:.9rem}
+.news input:focus{outline:none;border-color:var(--cyan)}
+
+/* ---- FOOTER ---- */
+footer.ft{border-top:3px solid var(--yel);padding:50px 0 30px;background:var(--ink)}
+.ft-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+.ft-brand{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:2.4rem;line-height:.8}
+.ft-brand .c{color:var(--mag)}
+.ft-soc{display:flex;gap:14px;flex-wrap:wrap}
+.ft-soc a{font-family:"Space Mono";font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);border:1px solid var(--line);padding:.5rem .9rem;transition:.15s}
+.ft-soc a:hover{color:#000;background:var(--cyan);border-color:var(--cyan)}
+.ft-bot{font-family:"Space Mono";font-size:.74rem;color:var(--grey);letter-spacing:.06em;border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:880px){
+  .intro-grid,.infos-grid{grid-template-columns:1fr}
+  .discs{grid-template-columns:1fr 1fr}
+  .passes{grid-template-columns:1fr}
+}
+@media(max-width:520px){.discs{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/></filter>
+  <symbol id="smiley" viewBox="0 0 100 100">
+    <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+      <circle cx="50" cy="50" r="40"/><path d="M30 35 L42 47 M42 35 L30 47"/>
+      <path d="M70 34c-5-6-13 0-8 7l8 8 8-8c5-7-3-13-8-7z" stroke-width="5"/>
+      <path d="M30 62 Q50 84 70 62"/></g>
+  </symbol>
+</defs></svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><svg viewBox="0 0 34 34"><use href="#smiley"/></svg>NICE&nbsp;<span class="c">CONTEST</span></a>
+    <nav>
+      <ul class="nav-links" id="menu">
+        <li><a href="#festival">Le festival</a></li>
+        <li><a href="#disciplines">Disciplines</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#lineup">Line-up</a></li>
+        <li><a href="#infos">Infos</a></li>
+        <li><a href="#billetterie" class="btn y">Billetterie</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero concrete" id="top">
+  <svg class="hero-smiley"><use href="#smiley"/></svg>
+  <div class="wrap" style="position:relative;z-index:3">
+    <div class="kicker">Festival de culture urbaine · Nice 06</div>
+    <h1 class="scr" style="font-size:clamp(4.4rem,18vw,14rem);margin:18px 0 8px">
+      <span class="ln"><i>N</i><i class="c">I</i><i>C</i><i>E</i></span>
+      <span class="ln"><i class="y">C</i><i class="m">O</i><i class="y">N</i><i class="y">T</i><i class="y">E</i><i class="y">S</i><i class="y">T</i></span>
+    </h1>
+    <div class="hero-meta">
+      <span><b>01 → 03 AOÛT 2026</b></span><span>/</span>
+      <span>NICE · CÔTE D'AZUR</span><span>/</span>
+      <span class="mark" style="color:var(--yel);font-size:1.15rem">3 jours dans la rue</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#billetterie" class="btn y">Prendre ma place</a>
+      <a href="#programme" class="btn ghost">Voir le programme</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marq" aria-hidden="true"><div class="marq-track">
+  <span>STREET ART</span><span class="dot">✕</span><span>HIP-HOP</span><span class="dot">✕</span><span>SKATE</span><span class="dot">✕</span><span>MUSIQUE LIVE</span><span class="dot">✕</span><span>NICE 06</span><span class="dot">✕</span>
+  <span>STREET ART</span><span class="dot">✕</span><span>HIP-HOP</span><span class="dot">✕</span><span>SKATE</span><span class="dot">✕</span><span>MUSIQUE LIVE</span><span class="dot">✕</span><span>NICE 06</span><span class="dot">✕</span>
+</div></div>
+
+<!-- LE FESTIVAL -->
+<section class="sec" id="festival"><div class="wrap">
+  <div class="reveal">
+    <div class="eyebrow">Le festival</div>
+    <h2 class="sec-h">3 jours, <span style="color:var(--mag)">une ville</span>,<br>tout en bas du périph mental.</h2>
+  </div>
+  <div class="intro-grid" style="margin-top:36px">
+    <p class="intro-lead reveal">Du <span class="y">1er au 3 août</span>, NICE CONTEST transforme la ville en terrain de jeu : murs, rampes, scènes et <span class="c">platines</span>.</p>
+    <div class="intro-body reveal">
+      <p>Fresques live, battles de breaking, contest de skate, sets jusqu'au bout de la nuit : trois jours où la culture urbaine prend l'espace public, gratuitement le jour, en scène le soir.</p>
+      <p>Une programmation 100 % vivante, pensée pour les locaux comme pour ceux qui débarquent — sans filtre, sans VIP qui se la racontent.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><b>40+</b><span>Artistes & crews</span></div>
+      <div class="stat reveal"><b>12</b><span>Murs à peindre</span></div>
+      <div class="stat reveal"><b>3</b><span>Scènes</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- DISCIPLINES -->
+<section class="sec concrete" id="disciplines"><div class="wrap" style="position:relative;z-index:2">
+  <div class="reveal"><div class="eyebrow">Au programme</div><h2 class="sec-h">Quatre disciplines</h2></div>
+  <div class="discs" style="margin-top:40px">
+    <div class="dcard reveal"><svg class="ic" viewBox="0 0 100 100"><g filter="url(#rough)" fill="currentColor"><circle cx="50" cy="46" r="30"/><rect x="44" y="60" width="12" height="34" rx="6"/></g></svg>
+      <h3>Street art</h3><p>Fresques monumentales peintes en direct, du pochoir au lettrage, par des artistes de toute la France.</p></div>
+    <div class="dcard reveal"><svg class="ic" viewBox="0 0 100 100"><g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"><path d="M28 28 L72 72 M72 28 L28 72"/></g></svg>
+      <h3>Hip-hop</h3><p>Battles de breaking, open mic, DJ sets et freestyles : la scène rap niçoise rencontre les têtes d'affiche.</p></div>
+    <div class="dcard reveal"><svg class="ic" viewBox="0 0 100 100"><g filter="url(#rough)" fill="currentColor"><rect x="14" y="44" width="72" height="16" rx="8"/><circle cx="30" cy="74" r="9"/><circle cx="70" cy="74" r="9"/></g></svg>
+      <h3>Skate</h3><p>Contest amateur et pro sur un park éphémère, démos, initiations et best trick toute la journée.</p></div>
+    <div class="dcard reveal"><svg class="ic" viewBox="0 0 100 100"><use href="#smiley"/></svg>
+      <h3>Musique</h3><p>Du beatmaking au live électro, trois scènes qui s'enchaînent jusqu'à la dernière basse de la nuit.</p></div>
+  </div>
+</div></section>
+
+<!-- PROGRAMME -->
+<section class="sec" id="programme"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Programme — 3 jours</div><h2 class="sec-h">Heure par heure</h2></div>
+  <div class="tabs reveal" role="tablist" style="margin-top:30px">
+    <button class="tab" role="tab" aria-selected="true" data-tab="j1">Ven. 01</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="j2">Sam. 02</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="j3">Dim. 03</button>
+  </div>
+  <div class="reveal">
+    <div class="panel active" id="j1">
+      <div class="slot"><span class="t mono">14:00</span><span class="e">Ouverture des murs<small>Lancement des fresques live — entrée libre</small></span><span class="tagd">Street art</span></div>
+      <div class="slot"><span class="t mono">16:00</span><span class="e">Initiation skate<small>Park éphémère — prêt de matériel</small></span><span class="tagd">Skate</span></div>
+      <div class="slot"><span class="t mono">19:00</span><span class="e">Open mic & cyphers<small>Scène centrale</small></span><span class="tagd">Hip-hop</span></div>
+      <div class="slot"><span class="t mono">21:30</span><span class="e">DJ set d'ouverture<small>Neøn Sound System</small></span><span class="tagd">Musique</span></div>
+    </div>
+    <div class="panel" id="j2">
+      <div class="slot"><span class="t mono">12:00</span><span class="e">Contest skate — qualifs<small>Catégories amateur & open</small></span><span class="tagd">Skate</span></div>
+      <div class="slot"><span class="t mono">15:00</span><span class="e">Battle de breaking 2v2<small>Phases finales en fin d'après-midi</small></span><span class="tagd">Hip-hop</span></div>
+      <div class="slot"><span class="t mono">18:00</span><span class="e">Visite des fresques<small>Avec les artistes</small></span><span class="tagd">Street art</span></div>
+      <div class="slot"><span class="t mono">22:00</span><span class="e">Concert — tête d'affiche<small>Scène principale</small></span><span class="tagd">Musique</span></div>
+    </div>
+    <div class="panel" id="j3">
+      <div class="slot"><span class="t mono">11:00</span><span class="e">Fresque collective géante<small>Ouverte au public</small></span><span class="tagd">Street art</span></div>
+      <div class="slot"><span class="t mono">14:00</span><span class="e">Finale contest skate<small>Best trick + remise des prix</small></span><span class="tagd">Skate</span></div>
+      <div class="slot"><span class="t mono">17:00</span><span class="e">Showcase rap<small>Découvertes locales</small></span><span class="tagd">Hip-hop</span></div>
+      <div class="slot"><span class="t mono">20:00</span><span class="e">Closing party<small>Tous les DJs du week-end</small></span><span class="tagd">Musique</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- LINEUP -->
+<section class="sec concrete" id="lineup"><div class="wrap" style="position:relative;z-index:2">
+  <div class="reveal"><div class="eyebrow">Line-up 2026</div><h2 class="sec-h">Qui sera là</h2></div>
+  <div class="lineup reveal" style="margin-top:34px">
+    <div class="act"><span class="nm">RIZÖ</span><span class="role">Street art · Marseille</span></div>
+    <div class="act"><span class="nm">DJ AZUR</span><span class="role">DJ set · Nice</span></div>
+    <div class="act"><span class="nm">CREW 06</span><span class="role">Fresque collective</span></div>
+    <div class="act"><span class="nm">SÉQUENCE 7</span><span class="role">Rap · live</span></div>
+    <div class="act"><span class="nm">NINA GRIND</span><span class="role">Skate · pro</span></div>
+    <div class="act"><span class="nm">NEØN SOUND SYSTEM</span><span class="role">Électro · live</span></div>
+    <div class="act"><span class="nm">MAYA TAG</span><span class="role">Lettrage · Lyon</span></div>
+    <div class="act"><span class="nm">L'MØMENT</span><span class="role">Breaking · crew</span></div>
+  </div>
+  <p class="lineup-note">+ une trentaine d'artistes à annoncer…</p>
+</div></section>
+
+<!-- INFOS -->
+<section class="sec" id="infos"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Infos pratiques</div><h2 class="sec-h">Comment venir</h2></div>
+  <div class="infos-grid" style="margin-top:36px">
+    <div class="infocard reveal">
+      <h3>L'essentiel</h3>
+      <ul>
+        <li><b>Dates</b><span>Ven. 1 → dim. 3 août 2026</span></li>
+        <li><b>Lieu</b><span>Friche du Port — Nice (06)</span></li>
+        <li><b>Horaires</b><span>14h–02h (journée libre, soirées sur pass)</span></li>
+        <li><b>Accès</b><span>Tram T1 arrêt Port · parkings à proximité</span></li>
+        <li><b>Âge</b><span>Tout public en journée · 16+ en soirée</span></li>
+      </ul>
+    </div>
+    <div class="mapblock reveal">
+      <div class="grid"></div>
+      <div class="road" style="left:0;right:0;top:30%;transform:rotate(-3deg)"></div>
+      <div class="road" style="left:0;right:0;top:64%;transform:rotate(2deg)"></div>
+      <div class="pin"><div class="dot"></div><div class="lbl">Friche du Port</div></div>
+      <div class="tagm">NICE · CÔTE D'AZUR · 43.70°N 7.28°E</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- BILLETTERIE -->
+<section class="sec bill" id="billetterie"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Billetterie</div><h2 class="sec-h">Prends ta place</h2>
+    <p class="sec-sub">La journée est gratuite. Les soirées (concerts + closing) sont sur pass — nombre limité.</p></div>
+  <div class="passes" style="margin-top:38px">
+    <div class="pass reveal">
+      <div class="hd"><div class="nm">Pass<br>1 soir</div></div>
+      <div class="price"><b>19<span class="y">€</span></b> <span>/ soirée</span></div>
+      <ul><li>Accès à une soirée au choix</li><li>Toutes les scènes</li><li>Journée libre incluse</li></ul>
+      <div class="barcode"></div>
+      <div class="foot"><a href="#" class="btn ghost">Choisir</a></div>
+    </div>
+    <div class="pass hot reveal">
+      <div class="hd"><div class="nm">Pass<br>3 jours</div><span class="badge">★ Le + pris</span></div>
+      <div class="price"><b>45<span class="y">€</span></b> <span>/ 3 soirées</span></div>
+      <ul><li>Les 3 soirées</li><li>Toutes les scènes & contests</li><li>1 sticker pack offert</li><li>File d'accès prioritaire</li></ul>
+      <div class="barcode"></div>
+      <div class="foot"><a href="#" class="btn y">Je prends</a></div>
+    </div>
+    <div class="pass reveal">
+      <div class="hd"><div class="nm">Pass<br>Backstage</div></div>
+      <div class="price"><b>89<span class="y">€</span></b> <span>/ 3 jours +</span></div>
+      <ul><li>Tout le Pass 3 jours</li><li>Accès backstage & artistes</li><li>Lanyard collector + tote</li><li>Zone lounge</li></ul>
+      <div class="barcode"></div>
+      <div class="foot"><a href="#" class="btn ghost">Choisir</a></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- NEWSLETTER -->
+<section class="sec news"><div class="wrap reveal">
+  <div class="eyebrow" style="text-align:center">Reste dans la boucle</div>
+  <h2 class="sec-h">Line-up complet bientôt</h2>
+  <p class="sec-sub" style="margin-left:auto;margin-right:auto">Laisse ton mail : tu seras prévenu·e de l'ouverture de la billetterie et des annonces d'artistes.</p>
+  <form onsubmit="return false">
+    <input type="email" placeholder="ton@email.fr" aria-label="Email" required>
+    <button class="btn y" type="submit">Je m'inscris</button>
+  </form>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="ft"><div class="wrap">
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand">NICE<br><span class="c">CONTEST</span></div>
+      <p class="mark" style="color:var(--yel);font-size:1.2rem;margin-top:8px">3 jours dans la rue</p>
+    </div>
+    <div class="ft-soc">
+      <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 NICE CONTEST — Festival de culture urbaine · Nice 06</span>
+    <span>Édition concept · projet portfolio · Mentions légales</span>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  // mobile menu
+  var btn=document.getElementById('menuBtn'),menu=document.getElementById('menu');
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+    document.body.classList.toggle('lock',open);
+  });
+  menu.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){menu.classList.remove('open');document.body.classList.remove('lock');btn.setAttribute('aria-expanded','false');}
+  });
+
+  // programme tabs
+  var tabs=document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.setAttribute('aria-selected','false');});
+      t.setAttribute('aria-selected','true');
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+      document.getElementById(t.dataset.tab).classList.add('active');
+    });
+  });
+
+  // scroll reveal
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+    },{threshold:.12});
+    els.forEach(function(el){io.observe(el);});
+  }else{ els.forEach(function(el){el.classList.add('in');}); }
+})();
+</script>
+</body>
+</html>
